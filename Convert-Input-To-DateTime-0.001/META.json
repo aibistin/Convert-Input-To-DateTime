@@ -1,0 +1,58 @@
+{
+   "abstract" : "Role to convert input data to a DateTime object.",
+   "author" : [
+      "Austin Kenny <aibistin.cionnaith@gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Convert-Input-To-DateTime",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Data::Dump" : "0",
+            "DateTime" : "0",
+            "DateTime::Format::DateManip" : "0",
+            "DateTime::Format::Natural" : "0",
+            "Log::Any" : "0",
+            "Modern::Perl" : "0",
+            "Moose::Role" : "0",
+            "MooseX::Types::Common::String" : "0",
+            "Mover::Date::Types" : "0",
+            "Readonly" : "0",
+            "Regexp::Common" : "0",
+            "Scalar::Util" : "0",
+            "String::Util" : "0",
+            "Try::Tiny" : "0",
+            "autodie" : "0",
+            "namespace::autoclean" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0",
+            "File::Find" : "0",
+            "File::Spec::Functions" : "0",
+            "File::Temp" : "0",
+            "List::Util" : "0",
+            "Test::More" : "0",
+            "strict" : "0",
+            "warnings" : "0"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "version" : "0.001"
+}
+
