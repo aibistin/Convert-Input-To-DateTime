@@ -1,0 +1,167 @@
+NAME
+    Convert::Input::To::DateTime
+
+VERSION
+    version 0.001
+
+SYNOPSIS
+    package My::AnyModule; use Moose;
+
+    with 'Convert::Input::To::DateTime'; #------ Input date in string,
+    hashref, DateTime format. my $DateTime =
+    $self->convert_to_datetime($input_date);
+
+  _parse_date_yyyymmdd
+  Parse yyyymmdd with Regexp common YMD.
+  Returns a HashRef with the parsed date elements or $FAIL.
+  _parse_date_mmddyyyy
+ Parse date MMDDYYYY USA style,  using Regexp common.
+ Returns a HashRef with the parsed date elements or $FAIL.
+  _parse_date_ddmmyyyy
+ Parse date ddmmyyyy European style ,  using Regexp common
+ Returns a HashRef with the parsed date elements.
+  _parse_hme_am_or_pm
+ Parse to HashRef Hours Minutes and OPtionally Seconds and AM or PM from a string
+ Returns a HashRef with the parsed time elements or $FAIL.
+  _parse_iso_datetime_str
+ Parse date time elements from date string in ISO-8601 format
+ Passed a string in ISO-8601 format YYYY-MM-DDTHH:MM:SS
+      $mover_date_href =
+      $parse_iso_datetime_str(' some rubbish plus 1970-12-25T09:15:22 ');
+
+     $mover_date_href->{year}  # 1970
+     $mover_date_href->{month} # 12
+     $mover_date_href->{day}   # 25
+     $mover_date_href->{hour}  # 09
+     $mover_date_href->{minute} # 15
+     $mover_date_href->{second}  # 22
+
+     Returns a HashRef with the parsed date time elements or $FAIL.
+
+  _format_iso_string_to_datetime_tz
+ Regexp Common Format Iso string to DateTime with Time Zone
+ Pass an ISO String and time zone.
+ If no time zone passed, then it defaults to UTC time zone
+ Sample string "2012-12-04T20:03:00z"
+ Uses Regexp::Common
+ Return the formatted DateTime object with time zone
+ Will not format an imperfect Iso string.
+     my $MyDateTime = _format_iso_string_to_datetime_tz(
+        {date_str  => "2012-12-04T20:03:00z"',  time_zone => $UTC_TZ});
+
+  _format_yyyymmdd_to_datetime_tz 
+       _format_ddmmyyyy_to_datetime_tz
+       _format_mmddyyyy_to_datetime_tz
+ Regexp Common Fortmat yyyymmdd string to DateTime with Time Zone
+                       mmddyyyy string to DateTime with Time Zone
+                       ddmmyyyy string to DateTime with Time Zone
+ Pass a string containint a date in yyyymmdd format
+ Pass a time_zont or it will default to UTC.
+ Returns DateTime object or $FAIL.
+     my $MyDateTime = format_yyyymmdd_to_datetime_tz(
+        {date_str  => '1979/12/25',  time_zone => $UTC_TZ});
+
+  _format_hashref_to_datetime
+ Format a hashref to a DateTime Object
+ Convert a HashRef to a DateTime Obj
+ Pass the HashRef with Date Time elements
+ my $MyDateTime = $format_hashref_to_datetime(
+ {
+     year      => $year,
+     month     => $month,
+     day       => $day,
+     hour      => $hour,
+     minute    => $minute,
+     second    => $second,
+  },  $UTC_TZ);
+  _parser_manip
+ Format a string into a DateTime Object using 
+ DateTime::Format::DateManip
+ Returns DateTime object or $FAIL.
+ Converts to a time zone,  if a time_zone parameter is passed to the method.
+     my $MyDateTime = _parser_manip(
+         {date_str  => '   January 1st,  2001 ',  time_zone => $UTC_TZ});
+
+  _parser_natural
+ Format a natural language string into a DateTime Obj
+ Uses DateTime::Format::Natural
+ Pass the String eg "tomorrow at noon" "Friday evening" etc
+ as a named Paramater HashRef ( {date_str => "Friday  Evening"})
+ Returns the DateTime object to represent this time.
+ Or else it returns Fail
+  _create_natural_formatter
+ Create a DateTime::Format::Natural Object
+ Returns the DateTime::Format::Natural object formatter
+ Or else it returns Fail
+ Uses the UTC time zone
+  _str_has_untainted_content_or_confess
+ Checks a string for tainted data. Confess and exit if ther is.
+  _hashref_has_untainted_content_or_confess
+ Checks a HashRef for tainted data. Confess and exit if there is.
+NAME
+    Convert::Input::To::DateTime - Role to convert input data to a DateTime
+    object.
+
+VERSION
+    Version 0.01
+
+AUTHOR
+    Austin Kenny, "<aibistin.cionnaith at gmail.com>"
+
+BUGS
+    Please report any bugs or feature requests to
+    "bug-convert-input-to-datetime at rt.cpan.org", or through the web
+    interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Convert-Input-To-DateTim
+    e>. I will be notified, and then you'll automatically be notified of
+    progress on your bug as I make changes.
+
+SUPPORT
+    You can find documentation for this module with the perldoc command.
+
+        perldoc Convert::Input::To::DateTime
+
+    You can also look for information at:
+
+    *   RT: CPAN's request tracker (report bugs here)
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Convert-Input-To-DateTime>
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/Convert-Input-To-DateTime>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/Convert-Input-To-DateTime>
+
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/Convert-Input-To-DateTime/>
+
+ACKNOWLEDGEMENTS
+LICENSE AND COPYRIGHT
+    Copyright 2013 Austin Kenny.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of either: the GNU General Public License as published
+    by the Free Software Foundation; or the Artistic License.
+
+    See http://dev.perl.org/licenses/ for more information.
+
+AUTHOR
+    Austin Kenny <aibistin.cionnaith@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Austin Kenny.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 581:
+        Unknown directive: =head
+
